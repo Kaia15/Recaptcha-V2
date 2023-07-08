@@ -1,29 +1,26 @@
-
-<!DOCTYPE html>
 <html>
   <head>
-    <title>reCAPTCHA demo: Simple page</title>
-    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
-    async defer>
-    </script>
+    <title>reCAPTCHA demo: Explicit render after an onload callback</title>
     <script type="text/javascript">
-        var onloadCallback = function() {
-          alert("grecaptcha is ready!");
-        };
-        var onloadCallback = function() {
-        grecaptcha.render('example3', {
+      var verifyCallback = function(response) {
+        alert(response);
+      };
+      var onloadCallback = function() {
+        grecaptcha.render('html_element', {
           'sitekey' : '6Lc9fgInAAAAAKZze2KYFdpQanFdBmYQ6nN8CKa5',
-          'callback' : verifyCallback,
-          'theme' : 'dark'
+           'callback' : verifyCallback
         });
       };
     </script>
   </head>
   <body>
     <form action="?" method="POST">
-        <div id="example3"></div>
-        <br>
-        <input type="submit" value="Submit">
+      <div id="html_element"></div>
+      <br>
+      <input type="submit" value="Submit">
     </form>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+        async defer>
+    </script>
   </body>
 </html>
