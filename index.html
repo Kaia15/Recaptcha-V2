@@ -1,27 +1,29 @@
 
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://www.google.com/recaptcha/api.js"></script>
-    <title>reCAPTCHA</title>
-</head>
-<body>
-    <form action="javascript:alert(grecaptcha.getResponse(widgetId1));">
-        <div id="example1"></div>
+<html>
+  <head>
+    <title>reCAPTCHA demo: Simple page</title>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+    async defer>
+    </script>
+    <script type="text/javascript">
+        var onloadCallback = function() {
+          alert("grecaptcha is ready!");
+        };
+        var onloadCallback = function() {
+        grecaptcha.render('example3', {
+          'sitekey' : '6Lc9fgInAAAAAKZze2KYFdpQanFdBmYQ6nN8CKa5',
+          'callback' : verifyCallback,
+          'theme' : 'dark'
+        });
+      };
+    </script>
+  </head>
+  <body>
+    <form action="?" method="POST">
+        <div id="example3"></div>
         <br>
-        <input type="submit" value="getResponse">
-      </form>
-      <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
-        async defer>
-      </script>
-</body>
-<script type="text/javascript">
-    var verifyCallback = function(response) {
-      alert(response);
-    };
-</script>
-
+        <input type="submit" value="Submit">
+    </form>
+  </body>
 </html>
