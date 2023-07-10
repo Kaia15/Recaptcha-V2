@@ -3,8 +3,9 @@
     <title>reCAPTCHA demo: Explicit render after an onload callback</title>
     <script type="text/javascript">
       var verifyCallback = function(response) {
-        alert(response);
-        console.log(response);
+        const alert = document.getElementById("alert");
+        alert.style.display = "block";
+        alert.innerHTML += response;
       };
       var onloadCallback = function() {
         grecaptcha.render('html_element', {
@@ -23,5 +24,7 @@
     <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
         async defer>
     </script>
+    <div id = "alert" style = "display: none;">
+    </div>
   </body>
 </html>
